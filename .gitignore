@@ -8,11 +8,6 @@ wp-cli.local.yml
 # Directories
 node_modules/
 
-# React modules
-modules/
-modules/admin/
-modules/front/
-
 # DI cache
 di/cache/
 

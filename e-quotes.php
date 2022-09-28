@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     e-quotes
  * Plugin URI:      https://github.com/davsilveira/e-quotes-plugin
- * Description:     Quotation WordPress plugin
+ * Description:     Turn your WordPress in a quotation system and create beautiful proposals for your clients.
  * Author:          Darvin da Silveira
  * Author URI:      https://www.linkedin.com/in/darvin-da-silveira-9b016155/
  * License:         GPL3+
@@ -11,13 +11,12 @@
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package AwesomeTable
+ * @package Emplement\eQuotes
  */
 
 declare(strict_types=1);
 
-//use AwesomeTable\AwesomeTable;
-//use AwesomeTable\Core\Requirements;
+namespace Emplement\eQuotes;
 
 // Prevent direct access.
 defined( 'ABSPATH' ) || exit;
@@ -32,9 +31,9 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 /**
  * Check if plugin is installable and uninstall if conditions are not met.
  */
-//Requirements::check_installation_conditions( __FILE__ );
+Core\Requirements::check_installation_conditions( __FILE__ );
 
 /**
  * Initialize plugin
  */
-//add_action( 'plugins_loaded', [ AwesomeTable::instance(), 'init' ] );
+add_action( 'plugins_loaded', [ eQuotes::instance(), 'init' ] );

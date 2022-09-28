@@ -1,0 +1,48 @@
+# Copyright (C) 2022 Darvin da Silveira
+# This file is distributed under the same license as the e-quotes plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: e-quotes 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/e-quotes\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-09-28T12:20:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: e-quotes\n"
+
+#. Plugin Name of the plugin
+msgid "e-quotes"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/davsilveira/e-quotes-plugin"
+msgstr ""
+
+#. Description of the plugin
+msgid "Turn your WordPress in a quotation system and create beautiful proposals for your clients."
+msgstr ""
+
+#. Author of the plugin
+msgid "Darvin da Silveira"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.linkedin.com/in/darvin-da-silveira-9b016155/"
+msgstr ""
+
+#: src/Core/DIContainer.php:80
+msgid "Error while trying to build the php-di container."
+msgstr ""
+
+#: src/Core/Requirements.php:58
+msgid " and "
+msgstr ""
+
+#. translators: %1$s is replaced with "string"
+#: src/Core/Requirements.php:66
+msgid "This plugin requires at least <strong>%s</strong>. Please fix the requirements and try again."
+msgstr ""

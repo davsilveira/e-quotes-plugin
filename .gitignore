@@ -3,7 +3,19 @@ phpcs.xml
 phpunit.xml
 Thumbs.db
 wp-cli.local.yml
+
+# Directories
 node_modules/
+
+# React modules
+modules/
+modules/admin/
+modules/front/
+
+# DI cache
+di/cache/
+
+# Misc
 *.sql
 *.tar.gz
 *.zip

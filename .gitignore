@@ -11,6 +11,9 @@ node_modules/
 # DI cache
 di/cache/
 
+# Dist version
+dist/
+
 # Misc
 *.sql
 *.tar.gz

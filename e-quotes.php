@@ -21,19 +21,18 @@ namespace Emplement\eQuotes;
 // Prevent direct access.
 defined( 'ABSPATH' ) || exit;
 
-/**
- * PSR4 autoload
- */
-if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+// PSR4 autoload.
+if ( is_file( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-/**
- * Check if plugin is installable and uninstall if conditions are not met.
- */
+// Check if plugin is installable and uninstall if conditions are not met.
 Core\Requirements::check_installation_conditions( __FILE__ );
 
-/**
- * Initialize plugin
- */
+// Initialize plugin.
 add_action( 'plugins_loaded', [ eQuotes::instance(), 'init' ] );
+
+// Adds cli commands.
+if ( defined( 'WP_CLI' ) && method_exists( 'WP_CLI', 'add_command' ) ) {
+	\WP_CLI::add_command( 'e-quotes', 'Emplement\eQuotes\Core\CliCommands' );
+}

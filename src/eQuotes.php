@@ -18,6 +18,8 @@ declare( strict_types=1 );
 namespace Emplement\eQuotes;
 
 use DI\Container;
+use DI\DependencyException;
+use DI\NotFoundException;
 
 //phpcs:disable PEAR.NamingConventions.ValidClassName.StartWithCapital
 
@@ -31,6 +33,11 @@ final class eQuotes {
 	 * Plugin version
 	 */
 	public const VERSION = '0.1.0';
+
+	/**
+	 * Dependency Admin\SettingsPage not found
+	 */
+	public const DEPENDENCY_NOT_FOUND = 1002;
 
 	/**
 	 * Our main instance
@@ -112,14 +119,29 @@ final class eQuotes {
 	 * Initialize plugin hooks
 	 *
 	 * @return void
+	 * @throws NotFoundException Dependency not found.
 	 */
 	public function init(): void {
 
 		// Loads our DI container.
-		$this->container = ( new Core\DIContainer() )->enable_compilation( false )->build_container();
+		$this->container = ( new Core\DIContainer() )
+			->enable_compilation( false )
+			->build_container();
 
 		// Loads translations.
 		add_action( 'init', [ $this, 'load_text_domain' ] );
+
+		// Admin only hooks.
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			try {
+				$this->container()->make( Admin\SettingsPage::class )->init();
+			} catch ( DependencyException | NotFoundException $e ) {
+				throw new NotFoundException(
+					__( 'Dependency Admin\SettingsPage not found', 'e-quotes' ),
+					self::DEPENDENCY_NOT_FOUND
+				);
+			}
+		}
 	}
 
 	/**

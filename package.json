@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "await-spawn": "^4.0.2",
-    "gulp": "^4.0.2"
+    "fancy-log": "^2.0.0",
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.1.3"
   }
 }

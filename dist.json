@@ -1,10 +1,11 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.12",
   "react_modules": [
     {
       "name": "admin",
-      "buildPath": "modules/admin/build",
-      "classPath": "src/Admin/SettingsPage.php",
+      "buildPath": "modules/admin/build/",
+      "classPath": "src/Admin/",
+      "className": "SettingsPage.php",
       "versions": {
         "previous": {
           "assets": {

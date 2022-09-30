@@ -32,7 +32,7 @@ final class eQuotes {
 	/**
 	 * Plugin version
 	 */
-	public const VERSION = '0.1.12';
+	public const VERSION = '0.1.23';
 
 	/**
 	 * Dependency Admin\SettingsPage not found

@@ -98,18 +98,19 @@ async function updateReactModulesAssets() {
 
 // Prepare to build.
 async function prepareBuild() {
-	const dist = getDistData();
+
 	// Build the modules with npm run-scripts build.
-	await buildReactModules();
+	OK
 	// Change version on package.json, e-quotes.php, src/eQuotes.php.
-
+	OK
 	// Update dist.json version.
-
+	OK
 	// Change module assets filepaths.
-
+	OK
 	// Update dist.json module assets.
-
+	OK
 	// Regenerate pot file.
+	OK
 }
 
 // Build dist version.

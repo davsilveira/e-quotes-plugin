@@ -7,17 +7,29 @@ const util = require('node:util');
 const argv = require('yargs').argv;
 const replace = require('gulp-replace');
 const exec = util.promisify(require('node:child_process').exec);
-const dist = getDistData();
+const dist = require('./dist.json');
 
 /* ------ FUNCTIONS ------ */
 
-// Get data from last generated distribution.
-function getDistData() {
+// Search and replace in file using fs.
+function searchReplaceStrInFile(filePath, strToFind, contentToReplace) {
+	// TODO Use gulp-replace instead.
 	try {
-		const contents = fs.readFileSync('dist.json');
-		return JSON.parse(contents);
+		const contents = fs.readFileSync(filePath, 'utf8');
+		const replaced = contents.replace(strToFind, contentToReplace);
+
+		try {
+			log(
+				'File updated ' + filePath +
+				', searched for ' + strToFind +
+				', replaced with ' + contentToReplace
+			);
+			fs.writeFileSync(filePath, replaced, 'utf-8');
+		} catch (err) {
+			log.error(err);
+		}
 	} catch (err) {
-		console.log(err);
+		log.error(err);
 	}
 }
 
@@ -85,7 +97,7 @@ function getModulesBuildAssetsFiles() {
 		});
 		modules.push({
 			"name": module.name,
-			"aseets": hashNames
+			"assets": hashNames
 		});
 	});
 	return modules;
@@ -93,6 +105,7 @@ function getModulesBuildAssetsFiles() {
 
 /* ------ GULP TASKS ------ */
 
+// Run npm build for each module inside /modules/ folder.
 async function buildReactModules() {
 	const options = {
 		cwd: 'modules/admin'
@@ -115,15 +128,47 @@ async function buildReactModules() {
 	}
 }
 
-async function updateWpEnqueueScriptsFilePaths() {
-	for (const module of dist.react_modules) {
-		gulp.src(module.classPath + module.className)
-			.pipe(replace(module.versions.previous.assets.css, module.versions.current.assets.css))
-			.pipe(replace(module.versions.previous.assets.js, module.versions.current.assets.js))
-			.pipe(gulp.dest(module.classPath));
+// Update the assets version for all modules in the dist.json file.
+async function updateAssetsVersion() {
+	const buildVersion = getModulesBuildAssetsFiles();
+	let newDist = { ... dist };
+
+	for (const idx in buildVersion) {
+		const currentCss = newDist.react_modules[idx].versions.current.assets.css;
+		const currentJs = newDist.react_modules[idx].versions.current.assets.js;
+
+		newDist.react_modules[idx].versions.previous.assets.css = currentCss;
+		newDist.react_modules[idx].versions.previous.assets.js = currentJs;
+
+		newDist.react_modules[idx].versions.current.assets.css = buildVersion[idx].assets.css;
+		newDist.react_modules[idx].versions.current.assets.js = buildVersion[idx].assets.js;
+	}
+
+	try {
+		fs.writeFileSync('dist.json', JSON.stringify(newDist), 'utf-8');
+		log('Assets version updated');
+	} catch (err) {
+		log.error(err);
 	}
 }
 
+// Update wp_enqueue_scripts for modules with the new js and css paths based on versions in dist.json file.
+async function updateWpEnqueueScriptsFilePaths() {
+	for (const module of dist.react_modules) {
+		searchReplaceStrInFile(
+			module.classPath + module.className,
+			module.versions.previous.assets.css,
+			module.versions.current.assets.css
+		);
+		searchReplaceStrInFile(
+			module.classPath + module.className,
+			module.versions.previous.assets.js,
+			module.versions.current.assets.js
+		);
+	}
+}
+
+// Run make-pot command.
 async function updateTranslationsFiles() {
 	const { stdout, stderr } = await exec('wp i18n make-pot . languages/e-quotes.pot');
 	if(stdout.indexOf('POT file successfully generated!') !== -1) {
@@ -134,6 +179,7 @@ async function updateTranslationsFiles() {
 	}
 }
 
+// Update the version of the plugin in multiple files.
 async function updateVersion() {
 	const ma = (argv.ma === undefined) ? null : parseInt(argv.ma);
 	const mi = (argv.mi === undefined) ? null : parseInt(argv.mi);
@@ -155,50 +201,35 @@ async function updateVersion() {
 	const currentVersion = getCurrentVersion(false);
 
 	// Update e-quotes main plugin file.
-	gulp
-		.src('./e-quotes.php')
-		.pipe(
-			replace(
-				' * Version:         ' + currentVersion,
-				' * Version:         ' + newVersion
-			)
-		)
-		.pipe(
-			gulp.dest('.')
-		);
+	searchReplaceStrInFile(
+		'./e-quotes.php',
+		' * Version:         ' + currentVersion,
+		' * Version:         ' + newVersion
+	);
 
 	// Update eQuotes class.
-	gulp
-		.src('src/eQuotes.php')
-		.pipe(
-			replace(
-				'public const VERSION = \'' + currentVersion + '\';',
-				'public const VERSION = \'' + newVersion + '\';'
-			)
-		)
-		.pipe(
-			gulp.dest('src/')
-		);
+	searchReplaceStrInFile(
+		'src/eQuotes.php',
+		'public const VERSION = \'' + currentVersion + '\';',
+		'public const VERSION = \'' + newVersion + '\';'
+	)
 
 	// Update dist.json file.
-	gulp
-		.src('dist.json')
-		.pipe(
-			replace(
-				'"version": "' + currentVersion + '"',
-				'"version": "' + newVersion + '"'
-			)
-		)
-		.pipe(
-			gulp.dest('.')
-		);
+	let newDist = { ... dist };
+	newDist.version = newVersion;
 
-	log('Updated from version ' + currentVersion + ' to ' + newVersion);
+	try {
+		fs.writeFileSync('dist.json', JSON.stringify(newDist), 'utf-8');
+		log('Updated dist.json version from ' + currentVersion + ' to ' + newVersion);
+	} catch (err) {
+		log.error(err);
+	}
 }
 
 exports['prepare-build'] = gulp.series(
-	// buildReactModules,
-	// updateWpEnqueueScriptsFilePaths,
+	buildReactModules,
+	updateAssetsVersion,
+	updateWpEnqueueScriptsFilePaths,
+	updateTranslationsFiles,
 	updateVersion,
-	// updateTranslationsFiles,
 );

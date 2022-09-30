@@ -63,14 +63,14 @@ class SettingsPage {
 
 		wp_enqueue_style(
 			'e-quotes-settings-page',
-			eQuotes::url() . '/modules/admin/build/static/css/main.073c9b0a.css',
+			eQuotes::url() . '/modules/admin/build/static/css/main.5bbae7d2.css',
 			[],
 			eQuotes::VERSION,
 		);
 
 		wp_enqueue_script(
 			'e-quotes-settings-page',
-			eQuotes::url() . '/modules/admin/build/static/js/main.5290b9e7.js',
+			eQuotes::url() . '/modules/admin/build/static/js/main.410badd7.js',
 			[ 'jquery' ],
 			eQuotes::VERSION,
 			true

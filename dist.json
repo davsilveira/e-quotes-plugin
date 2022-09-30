@@ -1,5 +1,5 @@
 {
-  "version": "0.1.12",
+  "version": "0.1.23",
   "react_modules": [
     {
       "name": "admin",
@@ -9,14 +9,14 @@
       "versions": {
         "previous": {
           "assets": {
-            "css": "main.073c9b0a.css",
-            "js": "main.5290b9e7.js"
+            "css": "main.5bbae7d2.css",
+            "js": "main.410badd7.js"
           }
         },
         "current": {
           "assets": {
-            "css": "main.0000000.css",
-            "js": "main.0000000.js"
+            "css": "main.5bbae7d2.css",
+            "js": "main.410badd7.js"
           }
         }
       }

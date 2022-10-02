@@ -113,12 +113,12 @@ async function buildReactModules() {
 
 	for (const module of dist.react_modules) {
 		const { stdout, stderr } = await exec(
-			'npm run-script build',
+			'npm run build',
 			{
 				cwd: 'modules/' + module.name
 			}
 		);
-		if(stdout.indexOf('Compiled successfully.') !== -1) {
+		if(stdout.indexOf('compiled successfully') !== -1) {
 			log('Module:' + module.name + ' compiled successfully.');
 		} else {
 			log.error('Module:' + module.name + ' failed to compile, aborting...');
@@ -228,8 +228,8 @@ async function updateVersion() {
 
 exports['prepare-build'] = gulp.series(
 	buildReactModules,
-	updateAssetsVersion,
-	updateWpEnqueueScriptsFilePaths,
+	// updateAssetsVersion,
+	// updateWpEnqueueScriptsFilePaths,
 	updateTranslationsFiles,
 	updateVersion,
 );

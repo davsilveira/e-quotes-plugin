@@ -13,18 +13,17 @@ const dist = require('./dist.json');
 
 // Search and replace in file using fs.
 function searchReplaceStrInFile(filePath, strToFind, contentToReplace) {
-	// TODO Use gulp-replace instead.
 	try {
 		const contents = fs.readFileSync(filePath, 'utf8');
 		const replaced = contents.replace(strToFind, contentToReplace);
 
 		try {
+			fs.writeFileSync(filePath, replaced, 'utf-8');
 			log(
 				'File updated ' + filePath +
 				', searched for ' + strToFind +
 				', replaced with ' + contentToReplace
 			);
-			fs.writeFileSync(filePath, replaced, 'utf-8');
 		} catch (err) {
 			log.error(err);
 		}

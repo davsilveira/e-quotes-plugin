@@ -131,13 +131,22 @@ final class eQuotes {
 		// Loads translations.
 		add_action( 'init', [ $this, 'load_text_domain' ] );
 
+		try {
+			$this->container()->make( Admin\Settings\RegisterSettings::class )->init();
+		} catch ( DependencyException | NotFoundException $e ) {
+			throw new NotFoundException(
+				__( 'Dependency Admin\Settings\RegisterSettings not found', 'e-quotes' ),
+				self::DEPENDENCY_NOT_FOUND
+			);
+		}
+
 		// Admin only hooks.
 		if ( is_admin() && ! wp_doing_ajax() ) {
 			try {
-				$this->container()->make( Admin\SettingsPage::class )->init();
+				$this->container()->make( Admin\Settings\SettingsPage::class )->init();
 			} catch ( DependencyException | NotFoundException $e ) {
 				throw new NotFoundException(
-					__( 'Dependency Admin\SettingsPage not found', 'e-quotes' ),
+					__( 'Dependency Admin\Settings\SettingsPage not found', 'e-quotes' ),
 					self::DEPENDENCY_NOT_FOUND
 				);
 			}

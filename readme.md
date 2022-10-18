@@ -6,6 +6,9 @@
 1) Add to wp-config.php ``define( 'SCRIPT_DEBUG', true );``
 2) On */modules/{module-name}/webpack.config.js*, certify that your host matches the host in the configuration;
 
+### Running live reload from webpack server:
+From /modules/{modules-name}/ directory ``npm run start:hot``
+
 ### Common errors:
 
 ##### Invalid Host/Origin header errors:

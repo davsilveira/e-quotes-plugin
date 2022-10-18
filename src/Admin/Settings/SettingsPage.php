@@ -9,12 +9,12 @@
 
 declare(strict_types=1);
 
-namespace Emplement\eQuotes\Admin;
+namespace Emplement\eQuotes\Admin\Settings;
 
 use Emplement\eQuotes\eQuotes;
 
 /**
- * Routes class
+ * Options Page Class
  *
  * Adds custom routes
  */
@@ -64,14 +64,14 @@ class SettingsPage {
 		wp_enqueue_style(
 			'e-quotes-settings-page',
 			eQuotes::url() . '/modules/settings-page/build/index.css',
-			[],
+			[ 'wp-components' ],
 			eQuotes::VERSION,
 		);
 
 		wp_enqueue_script(
 			'e-quotes-settings-page',
 			eQuotes::url() . '/modules/settings-page/build/index.js',
-			[ 'wp-element' ],
+			[ 'wp-element', 'wp-components', 'wp-api' ],
 			eQuotes::VERSION,
 			true
 		);

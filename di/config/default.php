@@ -7,5 +7,5 @@ namespace Emplement\eQuotes;
 use function DI\get;
 
 return [
-	'AdminSettingsPage' => get( Admin\SettingsPage::class ),
+	'AdminSettingsPage' => get( Admin\Settings\SettingsPage::class ),
 ];

@@ -35,22 +35,38 @@ class RegisterSettings {
 	 * @return void
 	 */
 	public function register_settings(): void {
+		/* ---- General Settings ---- */
+
+		// Corporate name.
 		register_setting(
-			'e-quotes-settings',
-			'e-quotes-corporate-name',
+			'e_quotes_settings',
+			'e_quotes_corporate_name',
 			[
 				'default'      => '',
 				'show_in_rest' => true,
 				'type'         => 'string',
 			]
 		);
+
+		// Fantasy name.
 		register_setting(
-			'e-quotes-settings',
-			'e-quotes-fantasy-name',
+			'e_quotes_settings',
+			'e_quotes_fantasy_name',
 			[
 				'default'      => '',
 				'show_in_rest' => true,
 				'type'         => 'string',
+			]
+		);
+
+		// Main logo.
+		register_setting(
+			'e_quotes_settings',
+			'e_quotes_main_logo',
+			[
+				'default'      => 0,
+				'show_in_rest' => true,
+				'type'         => 'integer',
 			]
 		);
 	}

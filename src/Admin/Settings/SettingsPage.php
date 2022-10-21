@@ -68,10 +68,19 @@ class SettingsPage {
 			eQuotes::VERSION,
 		);
 
+		wp_enqueue_media();
+
 		wp_enqueue_script(
 			'e-quotes-settings-page',
 			eQuotes::url() . '/modules/settings-page/build/index.js',
-			[ 'wp-element', 'wp-components', 'wp-api' ],
+			[
+				'wp-element',
+				'wp-components',
+				'wp-api',
+				'wp-notices',
+				'wp-data',
+				'wp-media-utils',
+			],
 			eQuotes::VERSION,
 			true
 		);

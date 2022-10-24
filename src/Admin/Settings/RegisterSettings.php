@@ -69,5 +69,27 @@ class RegisterSettings {
 				'type'         => 'integer',
 			]
 		);
+
+		// Primary color.
+		register_setting(
+			'e_quotes_settings',
+			'e_quotes_primary_color',
+			[
+				'default'      => '',
+				'show_in_rest' => true,
+				'type'         => 'string',
+			]
+		);
+
+		// Secondary color.
+		register_setting(
+			'e_quotes_settings',
+			'e_quotes_secondary_color',
+			[
+				'default'      => '',
+				'show_in_rest' => true,
+				'type'         => 'string',
+			]
+		);
 	}
 }

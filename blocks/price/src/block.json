@@ -12,12 +12,9 @@
       "type": "number",
       "default": 0
     },
-    "currency": {
-      "type": "array",
-      "default": [],
-      "items": {
-        "type": "string"
-      }
+    "className": {
+      "type": "string",
+      "default": "equotes-price-component"
     }
   },
   "supports": {

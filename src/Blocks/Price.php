@@ -10,10 +10,16 @@ class Price {
 
 		add_action( 'init', [$this, 'register_block'] );
 		add_action( 'admin_enqueue_scripts', [$this, 'register_block_script'] );
-
 	}
 
 	public function register_block_script() {
+
+		wp_enqueue_style(
+			'equotes-price',
+			eQuotes::url() . '/blocks/price/build/main.css',
+			[],
+			eQuotes::VERSION,
+		);
 
 		wp_enqueue_script(
 			'equotes-price',
@@ -38,15 +44,24 @@ class Price {
 				'render_callback' => [ $this, 'render' ],
 			)
 		);
-
-
 	}
 
 
-	public function render() {
+	public function render( array $attributes ) : string {
 
-		return 'Preço';
+		// Ensure unique values.
+		$class_name = array_unique(
+			// Filter any empty strings from the final array.
+			array_filter(
+				// Ensure our class is always present.
+				array_merge( ['equotes-price-component', $attributes['className']] )
+			)
+		);
 
+		return sprintf(
+			'<div class="%s">%s</div>',
+			esc_attr( implode( ' ', $class_name ) ),
+			esc_html( $attributes['price'] ?? 0 )
+		);
 	}
-
 }

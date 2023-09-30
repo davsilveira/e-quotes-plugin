@@ -495,27 +495,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Edit; }
 /* harmony export */ });
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editor.scss */ "./blocks/price/src/editor.scss");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "react-refresh/runtime");
 
+var _s = __webpack_require__.$Refresh$.signature();
+var __assign = undefined && undefined.__assign || function () {
+  __assign = Object.assign || function (t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
 var TextControl = wp.components.TextControl;
+var useBlockProps = wp.blockEditor.useBlockProps;
+var __ = wp.i18n.__;
+
 function Edit(props) {
+  _s();
   var attributes = props.attributes,
     setAttributes = props.setAttributes;
-  return React.createElement("div", null, React.createElement("h2", null, "Pre\u00E7o do combust\u00EDvel"), React.createElement(TextControl, {
-    label: "Pre\u00E7o",
+  var blockProps = useBlockProps({
+    className: 'equotes-price-component'
+  });
+  var parseValue = function (value) {
+    return isNaN(parseInt(value)) ? 0 : parseInt(value);
+  };
+  return React.createElement("div", __assign({}, blockProps), React.createElement(TextControl, {
+    label: __('Price', 'equotes'),
     value: attributes.price,
     onChange: function (value) {
       return setAttributes({
-        price: parseInt(value)
+        price: parseValue(value)
       });
     }
-  }), React.createElement(TextControl, {
-    label: "It works with Typescript",
-    value: 100
   }));
 }
+_s(Edit, "YEL7iL8TqvRBOs7ntNc9dYbe+0M=", false, function () {
+  return [useBlockProps];
+});
 _c = Edit;
 var _c;
 __webpack_require__.$Refresh$.register(_c, "Edit");
@@ -6954,6 +6976,26 @@ module.exports = function (urlString) {
 
 /***/ }),
 
+/***/ "./blocks/price/src/editor.scss":
+/*!**************************************!*\
+  !*** ./blocks/price/src/editor.scss ***!
+  \**************************************/
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+    if(true) {
+      // 1696105583407
+      var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
+      module.hot.dispose(cssReload);
+      module.hot.accept(undefined, cssReload);
+    }
+  
+
+/***/ }),
+
 /***/ "./blocks/price/src/style.scss":
 /*!*************************************!*\
   !*** ./blocks/price/src/style.scss ***!
@@ -6965,7 +7007,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1696102450495
+      // 1696103329877
       var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -11399,7 +11441,7 @@ module.exports = getWDSMetadata;
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":0},"currency":{"type":"array","default":[],"items":{"type":"string"}}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":0},"className":{"type":"string","default":"equotes-price-component"}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -11531,7 +11573,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "ed85a6da55760fb7a2b4"; }
+/******/ 		__webpack_require__.h = function() { return "4b497b2be9d8403f2025"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

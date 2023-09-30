@@ -131,6 +131,8 @@ final class eQuotes {
 		// Loads translations.
 		add_action( 'init', [ $this, 'load_text_domain' ] );
 
+		$this->container()->make( 'PriceBlock' );
+
 		try {
 			$this->container()->make( Admin\Settings\RegisterSettings::class )->init();
 		} catch ( DependencyException | NotFoundException $e ) {

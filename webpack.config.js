@@ -13,10 +13,9 @@ const blockConfigs = blockDirectories.map((blockDirectory) => {
 			allowedHosts: 'auto',
 			host: 'equotes.local',
 			port: 8887,
-			proxy: { '/build': [Object] },
-			hot: false
+			proxy: { '/build': [Object] }
 		},
-		entry: path.resolve(blockDirectory, 'src', 'index.tsx'), // Altere para .tsx se estiver usando TypeScript
+		entry: path.resolve(blockDirectory, 'src', 'index.tsx'),
 		output: {
 			filename: 'index.js',
 			path: path.resolve(blockDirectory, 'build'),
@@ -31,7 +30,7 @@ const blockConfigs = blockDirectories.map((blockDirectory) => {
 						{
 							loader: 'ts-loader',
 							options: {
-								configFile: path.resolve(__dirname, 'tsconfig.json'), // Caminho para seu tsconfig.json
+								configFile: path.resolve(__dirname, 'tsconfig.json'),
 								transpileOnly: true,
 							},
 						},
@@ -40,7 +39,7 @@ const blockConfigs = blockDirectories.map((blockDirectory) => {
 			],
 		},
 		resolve: {
-			extensions: ['.ts', '.tsx', '.js', '.jsx'], // Certifique-se de incluir .js e .jsx
+			extensions: ['.ts', '.tsx', '.js', '.jsx'],
 		},
 	};
 });

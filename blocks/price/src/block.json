@@ -8,6 +8,10 @@
   "icon": "editor-table",
   "description": "Render a single price input",
   "attributes": {
+    "price": {
+      "type": "number",
+      "default": 0
+    },
     "currency": {
       "type": "array",
       "default": [],

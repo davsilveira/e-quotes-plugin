@@ -13,7 +13,7 @@
  * @link     https://github.com/davsilveira/e-quotes-plugin
  */
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace Emplement\eQuotes;
 

@@ -2,9 +2,12 @@
 
 ## Development server configuration:
 
-### Configuring webpack server for react modules (live reload):
-1) Add to wp-config.php ``define( 'SCRIPT_DEBUG', true );``
-2) On */modules/{module-name}/webpack.config.js*, certify that your host matches the host in the configuration;
+## Before start
+1) Clone the repository
+2) Navigate to the cloned repository and initialize/update submodules: `git submodule init && git submodule update`
+3) Navigate to /modules/settings-page/ and run: `npm install`
+4) Add to wp-config.php `define( 'SCRIPT_DEBUG', true );`
+5) We use live reload, on */modules/{module-name}/webpack.config.js*, certify that your host matches the host in the configuration (line 9);
 
 ### Running live reload from webpack server:
 From /modules/{modules-name}/ directory ``npm run start:hot``

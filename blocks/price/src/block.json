@@ -15,6 +15,14 @@
     "className": {
       "type": "string",
       "default": "equotes-price-component"
+    },
+    "displaySign": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayLabel": {
+      "type": "boolean",
+      "default": true
     }
   },
   "supports": {

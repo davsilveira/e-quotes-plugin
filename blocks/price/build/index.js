@@ -511,8 +511,15 @@ var __assign = undefined && undefined.__assign || function () {
   };
   return __assign.apply(this, arguments);
 };
-var TextControl = wp.components.TextControl;
-var useBlockProps = wp.blockEditor.useBlockProps;
+var _a = wp.components,
+  TextControl = _a.TextControl,
+  Panel = _a.Panel,
+  PanelBody = _a.PanelBody,
+  PanelRow = _a.PanelRow,
+  ToggleControl = _a.ToggleControl;
+var _b = wp.blockEditor,
+  InspectorControls = _b.InspectorControls,
+  useBlockProps = _b.useBlockProps;
 var __ = wp.i18n.__;
 
 function Edit(props) {
@@ -531,10 +538,29 @@ function Edit(props) {
   var parseValue = function (value) {
     return isNaN(parseFloat(value)) ? '' : parseFloat(value);
   };
-  return React.createElement("div", __assign({}, blockProps), React.createElement("span", {
+  return React.createElement(React.Fragment, null, React.createElement(InspectorControls, null, React.createElement(Panel, null, React.createElement(PanelBody, {
+    title: __('Settings', 'e-quotes'),
+    initialOpen: true
+  }, React.createElement(PanelRow, null, __('Display label:', 'e-quotes')), React.createElement(ToggleControl, {
+    label: __('Toggle label visibility', 'e-quotes'),
+    checked: attributes.displayLabel,
+    onChange: function (state) {
+      setAttributes({
+        displayLabel: state
+      });
+    }
+  }), React.createElement(PanelRow, null, __('Display currency sign:', 'e-quotes')), React.createElement(ToggleControl, {
+    label: __('Toggle sign visibility', 'e-quotes'),
+    checked: attributes.displaySign,
+    onChange: function (state) {
+      setAttributes({
+        displaySign: state
+      });
+    }
+  })))), React.createElement("div", __assign({}, blockProps), attributes.displaySign ? React.createElement("span", {
     className: "e-quotes-currency-sign"
-  }, getCurrencySign()), React.createElement(TextControl, {
-    label: __('Price', 'equotes'),
+  }, getCurrencySign()) : null, React.createElement(TextControl, {
+    label: attributes.displayLabel ? __('Price', 'equotes') : '',
     value: attributes.price,
     type: "number",
     help: __('Digit only numbers. Use , for decimal separator.', 'equotes'),
@@ -543,7 +569,7 @@ function Edit(props) {
         price: parseValue(value)
       });
     }
-  }));
+  })));
 }
 _s(Edit, "YEL7iL8TqvRBOs7ntNc9dYbe+0M=", false, function () {
   return [useBlockProps];
@@ -11451,7 +11477,7 @@ module.exports = getWDSMetadata;
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":0},"className":{"type":"string","default":"equotes-price-component"}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":0},"className":{"type":"string","default":"equotes-price-component"},"displaySign":{"type":"boolean","default":true},"displayLabel":{"type":"boolean","default":true}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -11583,7 +11609,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "915b28adc027ee76daab"; }
+/******/ 		__webpack_require__.h = function() { return "0737a5e44295434cc22c"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

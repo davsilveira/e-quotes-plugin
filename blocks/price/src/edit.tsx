@@ -1,6 +1,13 @@
-const { TextControl } = wp.components;
-const { useBlockProps } = wp.blockEditor;
+const {
+	TextControl,
+	Panel,
+	PanelBody,
+	PanelRow,
+	ToggleControl
+} = wp.components;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
+
 import './editor.scss';
 
 export default function Edit( props ) {
@@ -27,15 +34,50 @@ export default function Edit( props ) {
 	}
 
 	return (
-		<div { ...blockProps }>
-			<span className="e-quotes-currency-sign">{getCurrencySign()}</span>
-			<TextControl
-				label={__('Price', 'equotes')}
-				value={attributes.price}
-				type="number"
-				help={__('Digit only numbers. Use , for decimal separator.', 'equotes')}
-				onChange={(value) => setAttributes({ price: parseValue( value ) })}
-			/>
-		</div>
+		<>
+			<InspectorControls>
+				<Panel>
+					<PanelBody title={ __( 'Settings', 'e-quotes' ) } initialOpen={ true }>
+						<PanelRow>
+							{ __( 'Display label:', 'e-quotes' ) }
+						</PanelRow>
+						<ToggleControl
+							label={ __( 'Toggle label visibility', 'e-quotes' ) }
+							checked={ attributes.displayLabel }
+							onChange={ ( state ) => {
+								setAttributes({
+									displayLabel: state
+								});
+							} }
+						/>
+						<PanelRow>
+							{ __( 'Display currency sign:', 'e-quotes' ) }
+						</PanelRow>
+						<ToggleControl
+							label={ __( 'Toggle sign visibility', 'e-quotes' ) }
+							checked={ attributes.displaySign }
+							onChange={ ( state ) => {
+								setAttributes({
+									displaySign: state
+								});
+							} }
+						/>
+					</PanelBody>
+				</Panel>
+			</InspectorControls>
+			<div { ...blockProps }>
+				{ attributes.displaySign
+					? <span className="e-quotes-currency-sign">{getCurrencySign()}</span>
+					: null
+				}
+				<TextControl
+					label={ attributes.displayLabel ? __('Price', 'equotes') : '' }
+					value={attributes.price}
+					type="number"
+					help={__('Digit only numbers. Use , for decimal separator.', 'equotes')}
+					onChange={(value) => setAttributes({ price: parseValue( value ) })}
+				/>
+			</div>
+		</>
 	);
 }

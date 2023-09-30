@@ -70,11 +70,28 @@ class Price {
 			)
 		);
 
-		return sprintf(
-			'<div class="%s"><span class="e-quotes-currency-sign">%s</span>%s</div>',
-			esc_attr( implode( ' ', $class_name ) ),
-			esc_html( get_option( 'e_quotes_currency', 'USD' ) === 'USD' ? '$' : 'R$' ),
-			esc_html( $attributes['price'] ?? 0 )
-		);
+		ob_start();
+
+		?>
+
+		<div class="<?php echo esc_attr( implode( ' ', $class_name ) ); ?>">
+			<?php if ( isset( $attributes['displayLabel'] ) && ! empty( $attributes['displayLabel'] ) ) : ?>
+				<span class="e-quotes-price-label">
+					<?php echo esc_html_e( 'Price', 'e-quotes' ); ?>
+				</span>
+			<?php endif; ?>
+			<span class="e-quotes-price">
+				<?php if ( isset( $attributes['displaySign'] ) && ! empty( $attributes['displaySign'] ) ) : ?>
+					<span class="e-quotes-currency-sign">
+						<?php echo esc_html( get_option( 'e_quotes_currency', 'USD' ) === 'USD' ? '$' : 'R$' ); ?>
+					</span>
+				<?php endif; ?>
+				<span class="e-quotes-value"><?php echo esc_html( $attributes['price'] ?? 0 );  ?></span>
+			</span>
+		</div>
+
+		<?php
+
+		return ob_get_clean();
 	}
 }

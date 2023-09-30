@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "./build/",
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "target": "ES2015", // Set to ES5 for older browser support.
+    "target": "es5",
+    "module": "esnext",
+    "jsx": "react",
     "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
-  }
+    "esModuleInterop": true
+  },
+  "include": ["blocks/**/src/**/*.ts", "blocks/**/src/**/*.tsx"]
 }

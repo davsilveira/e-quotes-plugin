@@ -19,7 +19,8 @@
     "start": "wp-scripts start",
     "start:hot": "wp-scripts start --hot",
     "test:e2e": "wp-scripts test-e2e",
-    "test:unit": "wp-scripts test-unit-js"
+    "test:unit": "wp-scripts test-unit-js",
+    "watch": "webpack serve --config webpack.config.js --mode development"
   },
   "devDependencies": {
     "@wordpress/scripts": "^24.2.0",

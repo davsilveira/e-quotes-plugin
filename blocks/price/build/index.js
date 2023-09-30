@@ -522,12 +522,22 @@ function Edit(props) {
   var blockProps = useBlockProps({
     className: 'equotes-price-component'
   });
-  var parseValue = function (value) {
-    return isNaN(parseInt(value)) ? 0 : parseInt(value);
+  var getCurrencySign = function () {
+    if (typeof EQUOTES === 'undefined') {
+      throw new Error('Global EQUOTES not found. Make sure it is enqueued.');
+    }
+    return EQUOTES.settings.currency === 'USD' ? '$' : 'R$';
   };
-  return React.createElement("div", __assign({}, blockProps), React.createElement(TextControl, {
+  var parseValue = function (value) {
+    return isNaN(parseFloat(value)) ? '' : parseFloat(value);
+  };
+  return React.createElement("div", __assign({}, blockProps), React.createElement("span", {
+    className: "e-quotes-currency-sign"
+  }, getCurrencySign()), React.createElement(TextControl, {
     label: __('Price', 'equotes'),
     value: attributes.price,
+    type: "number",
+    help: __('Digit only numbers. Use , for decimal separator.', 'equotes'),
     onChange: function (value) {
       return setAttributes({
         price: parseValue(value)
@@ -11573,7 +11583,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "4b497b2be9d8403f2025"; }
+/******/ 		__webpack_require__.h = function() { return "915b28adc027ee76daab"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

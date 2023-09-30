@@ -34,6 +34,18 @@ class Price {
 			eQuotes::VERSION,
 			true
 		);
+
+		wp_add_inline_script(
+			'equotes-price',
+			'const EQUOTES = ' . wp_json_encode(
+				[
+					'settings' => [
+						'currency' => get_option( 'e_quotes_currency', 'USD' ),
+					]
+				]
+			),
+			'before'
+		);
 	}
 
 	public function register_block() {
@@ -59,8 +71,9 @@ class Price {
 		);
 
 		return sprintf(
-			'<div class="%s">%s</div>',
+			'<div class="%s"><span class="e-quotes-currency-sign">%s</span>%s</div>',
 			esc_attr( implode( ' ', $class_name ) ),
+			esc_html( get_option( 'e_quotes_currency', 'USD' ) === 'USD' ? '$' : 'R$' ),
 			esc_html( $attributes['price'] ?? 0 )
 		);
 	}

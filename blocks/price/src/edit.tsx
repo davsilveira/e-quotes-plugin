@@ -11,15 +11,29 @@ export default function Edit( props ) {
 		className: 'equotes-price-component'
 	});
 
+	const getCurrencySign = () => {
+
+		if ( typeof EQUOTES === 'undefined' ) {
+			throw new Error( 'Global EQUOTES not found. Make sure it is enqueued.' );
+		}
+
+		return EQUOTES.settings.currency === 'USD'
+			? '$'
+			: 'R$';
+	}
+
 	const parseValue = ( value: any ) => {
-		return isNaN( parseInt( value ) ) ? 0 : parseInt( value );
+		return isNaN( parseFloat( value ) ) ? '' : parseFloat( value );
 	}
 
 	return (
 		<div { ...blockProps }>
+			<span className="e-quotes-currency-sign">{getCurrencySign()}</span>
 			<TextControl
 				label={__('Price', 'equotes')}
 				value={attributes.price}
+				type="number"
+				help={__('Digit only numbers. Use , for decimal separator.', 'equotes')}
 				onChange={(value) => setAttributes({ price: parseValue( value ) })}
 			/>
 		</div>

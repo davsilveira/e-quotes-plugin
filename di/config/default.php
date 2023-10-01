@@ -13,6 +13,11 @@ return [
 		'SettingsPage' => create( Admin\Settings\SettingsPage::class )
 			->method( 'init' )
 	],
+	'App' => [
+		get( 'Blocks' ),
+		'RegisterSettings' => create( Admin\Settings\RegisterSettings::class )
+			->method( 'init' )
+	],
 	'Blocks' => [
 		get( Blocks\Price::class ),
 		get( Blocks\FinalSettings::class ),

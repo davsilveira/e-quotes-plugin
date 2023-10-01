@@ -81,11 +81,8 @@ final class eQuotes {
 		// Loads translations.
 		add_action( 'init', [ $this, 'load_text_domain' ] );
 
-		// Load all blocks.
-		$this->container()->make( 'Blocks' );
-
-		// Register global settings.
-		$this->container()->make( Admin\Settings\RegisterSettings::class )->init();
+		// Load global resources.
+		$this->container()->make( 'App' );
 
 		// Admin only hooks.
 		if ( is_admin() && ! wp_doing_ajax() ) {

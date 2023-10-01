@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('wp-blocks', 'wp-react-refresh-runtime'), 'version' => '4ae5ad7649540f4d2c37');
+<?php return array('dependencies' => array('wp-blocks', 'wp-react-refresh-runtime'), 'version' => '8b6b728e2bc7dd56d4ac');

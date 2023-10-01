@@ -118,7 +118,7 @@ final class eQuotes {
 	 * Initialize plugin hooks
 	 *
 	 * @return void
-	 * @throws NotFoundException Dependency not found.
+	 * @throws NotFoundException|\DI\DependencyException Dependency not found.
 	 */
 	public function init(): void {
 

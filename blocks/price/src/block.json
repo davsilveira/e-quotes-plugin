@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
-  "name": "equotes/price",
+  "name": "e-quotes/price",
   "version": "0.1.0",
   "title": "Single Price",
   "category": "text",
@@ -14,7 +14,7 @@
     },
     "className": {
       "type": "string",
-      "default": "equotes-price-component"
+      "default": "e-quotes-price-component"
     },
     "priceId": {
       "type": "string",
@@ -33,7 +33,7 @@
     "html": false
   },
   "keywords": [ "price", "input" ],
-  "textdomain": "equotes",
+  "textdomain": "e-quotes",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

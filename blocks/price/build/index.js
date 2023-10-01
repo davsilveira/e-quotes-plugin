@@ -531,7 +531,7 @@ function Edit(props) {
   var attributes = props.attributes,
     setAttributes = props.setAttributes;
   var blockProps = useBlockProps({
-    className: 'equotes-price-component'
+    className: 'e-quotes-price-component'
   });
   var getCurrencySign = function () {
     if (typeof EQUOTES === 'undefined') {
@@ -7032,7 +7032,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1696128854779
+      // 1696181677836
       var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -7052,7 +7052,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1696128854762
+      // 1696181677825
       var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -7279,14 +7279,14 @@ var WebSocketClient = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
+/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
 /*!*****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
+  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
   \*****************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var __resourceQuery = "?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
+var __resourceQuery = "?protocol=ws%3A&hostname=equotes.local&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webpack/hot/log.js */ "./node_modules/webpack/hot/log.js");
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -9754,13 +9754,13 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
-/***/ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8010&sockProtocol=http":
+/***/ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8887&sockProtocol=http":
 /*!**********************************************************************************************************************************************!*\
-  !*** ./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8010&sockProtocol=http ***!
+  !*** ./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8887&sockProtocol=http ***!
   \**********************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-var __resourceQuery = "?sockHost=equotes.local&sockPort=8010&sockProtocol=http";
+var __resourceQuery = "?sockHost=equotes.local&sockPort=8887&sockProtocol=http";
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 /* provided dependency */ var __react_refresh_socket__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/sockets/WDSSocket.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/sockets/WDSSocket.js");
 /* global __react_refresh_error_overlay__, __react_refresh_socket__, __resourceQuery */
@@ -11497,7 +11497,7 @@ module.exports = getWDSMetadata;
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":""},"className":{"type":"string","default":"equotes-price-component"},"priceId":{"type":"string","default":""},"displaySign":{"type":"boolean","default":true},"displayLabel":{"type":"boolean","default":true}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"e-quotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":""},"className":{"type":"string","default":"e-quotes-price-component"},"priceId":{"type":"string","default":""},"displaySign":{"type":"boolean","default":true},"displayLabel":{"type":"boolean","default":true}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"e-quotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -11629,7 +11629,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "4761572271e61be09ba0"; }
+/******/ 		__webpack_require__.h = function() { return "0c61cb1c0897b88ab958"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -12827,9 +12827,9 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js"); })
-/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true"); })
+/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true"); })
 /******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/webpack/hot/dev-server.js"); })
-/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8010&sockProtocol=http"); })
+/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8887&sockProtocol=http"); })
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./blocks/price/src/index.tsx"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

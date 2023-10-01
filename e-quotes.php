@@ -21,6 +21,9 @@ namespace Emplement\eQuotes;
 // Prevent direct access.
 defined( 'ABSPATH' ) || exit;
 
+// Add a constant to store the plugin absolute path.
+define( 'EQUOTES_PLUGIN_FILE', __FILE__ );
+
 // PSR4 autoload.
 if ( is_file( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';

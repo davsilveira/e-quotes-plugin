@@ -17,7 +17,7 @@ export default function Edit( props ) {
 	const { attributes, setAttributes } = props;
 
 	const blockProps = useBlockProps({
-		className: 'equotes-price-component'
+		className: 'e-quotes-price-component'
 	});
 
 	const getCurrencySign = () => {

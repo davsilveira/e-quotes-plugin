@@ -9,13 +9,24 @@ class Price {
 	public function __construct() {
 
 		add_action( 'init', [$this, 'register_block'] );
-		add_action( 'admin_enqueue_scripts', [$this, 'register_block_script'] );
+		add_action( 'wp_enqueue_scripts', [$this, 'register_front_script'] );
+		add_action( 'admin_enqueue_scripts', [$this, 'register_admin_script'] );
 	}
 
-	public function register_block_script() {
+	public function register_front_script() {
 
 		wp_enqueue_style(
-			'equotes-price',
+			'equotes-price-front',
+			eQuotes::url() . '/blocks/price/build/style-main.css',
+			[],
+			eQuotes::VERSION,
+		);
+	}
+
+	public function register_admin_script() {
+
+		wp_enqueue_style(
+			'equotes-price-admin',
 			eQuotes::url() . '/blocks/price/build/main.css',
 			[],
 			eQuotes::VERSION,
@@ -76,9 +87,9 @@ class Price {
 
 		<div class="<?php echo esc_attr( implode( ' ', $class_name ) ); ?>">
 			<?php if ( isset( $attributes['displayLabel'] ) && ! empty( $attributes['displayLabel'] ) ) : ?>
-				<span class="e-quotes-price-label">
+				<label for="<?php echo esc_attr( $attributes['priceId'] ); ?>" class="e-quotes-price-label">
 					<?php echo esc_html_e( 'Price', 'e-quotes' ); ?>
-				</span>
+				</label>
 			<?php endif; ?>
 			<span class="e-quotes-price">
 				<?php if ( isset( $attributes['displaySign'] ) && ! empty( $attributes['displaySign'] ) ) : ?>
@@ -86,7 +97,12 @@ class Price {
 						<?php echo esc_html( get_option( 'e_quotes_currency', 'USD' ) === 'USD' ? '$' : 'R$' ); ?>
 					</span>
 				<?php endif; ?>
-				<span class="e-quotes-value"><?php echo esc_html( $attributes['price'] ?? 0 );  ?></span>
+				<input
+					id="<?php echo esc_attr( $attributes['priceId'] ); ?>"
+					class="e-quotes-value"
+					value="<?php echo esc_attr( $attributes['price'] ?? 0 );  ?>"
+					readonly="readonly"
+				>
 			</span>
 		</div>
 

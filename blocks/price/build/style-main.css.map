@@ -1,0 +1,1 @@
+{"version":3,"file":"./style-main.css","mappings":";;;AAAA;EACC;AACD,C","sources":["webpack://e-quotes/./blocks/price/src/style.scss"],"sourcesContent":[".e-quotes-price-label {\n\tdisplay: block;\n}\n"],"names":[],"sourceRoot":""}

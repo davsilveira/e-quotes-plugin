@@ -10,11 +10,15 @@
   "attributes": {
     "price": {
       "type": "number",
-      "default": 0
+      "default": ""
     },
     "className": {
       "type": "string",
       "default": "equotes-price-component"
+    },
+    "priceId": {
+      "type": "string",
+      "default": ""
     },
     "displaySign": {
       "type": "boolean",

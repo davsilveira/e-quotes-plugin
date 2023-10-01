@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":";;;AAAA;EACC;EACA;EACA;AACD;AACC;EACC;AACF,C","sources":["webpack://e-quotes/./blocks/price/src/editor.scss"],"sourcesContent":[".equotes-price-component {\n\tdisplay: flex;\n\talign-items: center;\n\tgap: 0.25rem;\n\n\t.e-quotes-currency-sign {\n\t\tmargin-top: -16px;\n\t}\n}\n"],"names":[],"sourceRoot":""}

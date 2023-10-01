@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('wp-blocks', 'wp-react-refresh-runtime'), 'version' => '90ab9a445a51fddf3568');
+<?php return array('dependencies' => array('lodash', 'wp-blocks', 'wp-react-refresh-runtime'), 'version' => 'c086950264e27bd403f9');

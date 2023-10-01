@@ -7,7 +7,9 @@ const {
 } = wp.components;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
+const { useEffect } = wp.element;
 
+import { uniqueId } from 'lodash';
 import './editor.scss';
 
 export default function Edit( props ) {
@@ -32,6 +34,10 @@ export default function Edit( props ) {
 	const parseValue = ( value: any ) => {
 		return isNaN( parseFloat( value ) ) ? '' : parseFloat( value );
 	}
+
+	useEffect( () => {
+		setAttributes( { priceId : uniqueId( 'equotes-price-' ) } );
+	}, [] );
 
 	return (
 		<>
@@ -74,7 +80,7 @@ export default function Edit( props ) {
 					label={ attributes.displayLabel ? __('Price', 'equotes') : '' }
 					value={attributes.price}
 					type="number"
-					help={__('Digit only numbers. Use , for decimal separator.', 'equotes')}
+					help={__('Only numbers. Use , for decimal separator.', 'equotes')}
 					onChange={(value) => setAttributes({ price: parseValue( value ) })}
 				/>
 			</div>

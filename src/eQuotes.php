@@ -75,7 +75,7 @@ final class eQuotes {
 
 		// Loads our DI container.
 		$this->container = ( new Core\DIContainer() )
-			->enable_compilation( false )
+			->enable_compilation( defined( 'SCRIPT_DEBUG' ) &&  ! SCRIPT_DEBUG )
 			->build_container();
 
 		// Loads translations.

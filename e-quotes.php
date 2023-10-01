@@ -14,7 +14,7 @@
  * @package Emplement\eQuotes
  */
 
-declare(strict_types=1);
+declare( strict_types=1 );
 
 namespace Emplement\eQuotes;
 

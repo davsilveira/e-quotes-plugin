@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "equotes/price",
+  "version": "0.1.0",
+  "title": "Single Price",
+  "category": "text",
+  "icon": "editor-table",
+  "description": "Render a single price input",
+  "attributes": {
+    "price": {
+      "type": "number",
+      "default": ""
+    },
+    "className": {
+      "type": "string",
+      "default": "equotes-price-component"
+    },
+    "priceId": {
+      "type": "string",
+      "default": ""
+    },
+    "displaySign": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayLabel": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "keywords": [ "price", "input" ],
+  "textdomain": "equotes",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

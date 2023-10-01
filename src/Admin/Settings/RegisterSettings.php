@@ -91,5 +91,16 @@ class RegisterSettings {
 				'type'         => 'string',
 			]
 		);
+
+		// Currency.
+		register_setting(
+			'e_quotes_settings',
+			'e_quotes_currency',
+			[
+				'default'      => 'USD',
+				'show_in_rest' => true,
+				'type'         => 'string',
+			]
+		);
 	}
 }

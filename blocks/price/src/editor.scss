@@ -1,0 +1,9 @@
+.equotes-price-component {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+
+	.e-quotes-currency-sign {
+		margin-top: -16px;
+	}
+}

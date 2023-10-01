@@ -13,7 +13,7 @@
  * @link     https://github.com/davsilveira/e-quotes-plugin
  */
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace Emplement\eQuotes;
 
@@ -130,6 +130,8 @@ final class eQuotes {
 
 		// Loads translations.
 		add_action( 'init', [ $this, 'load_text_domain' ] );
+
+		$this->container()->make( 'PriceBlock' );
 
 		try {
 			$this->container()->make( Admin\Settings\RegisterSettings::class )->init();

@@ -22,11 +22,15 @@ export default function Edit( props ) {
 
 	const getCurrencySign = () => {
 
-		if ( typeof EQUOTES === 'undefined' ) {
-			throw new Error( 'Global EQUOTES not found. Make sure it is enqueued.' );
+		if ( typeof eQuotes === 'undefined' ) {
+			throw new Error( 'eQuotes not found. Make sure it is enqueued.' );
 		}
 
-		return EQUOTES.settings.currency === 'USD'
+		if ( ! eQuotes.has( 'pluginSettings' ) ) {
+			throw new Error( 'eQuotes.pluginSettings not found.' );
+		}
+
+		return eQuotes.pluginSettings.currency === 'USD'
 			? '$'
 			: 'R$';
 	}
@@ -36,7 +40,7 @@ export default function Edit( props ) {
 	}
 
 	useEffect( () => {
-		setAttributes( { priceId : uniqueId( 'equotes-price-' ) } );
+		setAttributes( { priceId : uniqueId( 'e-quotes-price-' ) } );
 	}, [] );
 
 	return (
@@ -77,10 +81,10 @@ export default function Edit( props ) {
 					: null
 				}
 				<TextControl
-					label={ attributes.displayLabel ? __('Price', 'equotes') : '' }
+					label={ attributes.displayLabel ? __('Price', 'e-quotes') : '' }
 					value={attributes.price}
 					type="number"
-					help={__('Only numbers. Use , for decimal separator.', 'equotes')}
+					help={__('Only numbers. Use , for decimal separator.', 'e-quotes')}
 					onChange={(value) => setAttributes({ price: parseValue( value ) })}
 				/>
 			</div>

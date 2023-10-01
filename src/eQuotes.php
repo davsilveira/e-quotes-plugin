@@ -89,7 +89,7 @@ final class eQuotes {
 
 		// Admin only hooks.
 		if ( is_admin() && ! wp_doing_ajax() ) {
-			$this->container()->make( Admin\Settings\SettingsPage::class )->init();
+			$this->container()->make( 'Admin' );
 		}
 	}
 

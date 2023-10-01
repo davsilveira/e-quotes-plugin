@@ -9,6 +9,7 @@ abstract class Block implements BlockInterface {
 	use \Emplement\eQuotes\Traits\Utils;
 
 	private array $block_dependencies = [
+		'e-quotes',
 		'wp-block-editor',
 		'wp-blocks',
 		'wp-components',
@@ -85,18 +86,6 @@ abstract class Block implements BlockInterface {
 			$this->block_dependencies,
 			$this->plugin_version(),
 			true
-		);
-
-		wp_add_inline_script(
-			'e-quotes-price',
-			'const EQUOTES = ' . wp_json_encode(
-				[
-					'settings' => [
-						'currency' => get_option( 'e_quotes_currency', 'USD' ),
-					]
-				]
-			),
-			'before'
 		);
 	}
 }

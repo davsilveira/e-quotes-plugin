@@ -3,6 +3,7 @@ const path = require('path');
 const glob = require('glob');
 
 // Change to the block you want to edit.
+// const blockDirectories = glob.sync('./blocks/final-settings/');
 const blockDirectories = glob.sync('./blocks/price/');
 
 const blockConfigs = blockDirectories.map((blockDirectory) => {

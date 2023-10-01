@@ -21,7 +21,7 @@ namespace Emplement\eQuotes;
 // Prevent direct access.
 defined( 'ABSPATH' ) || exit;
 
-// Add a constant to store the plugin absolute path.
+// Useful to use in conjuction with functions to generate the plugin path and URL.
 define( 'EQUOTES_PLUGIN_FILE', __FILE__ );
 
 // PSR4 autoload.

@@ -28,15 +28,6 @@ use DI\NotFoundException;
  * @since 0.0.1
  */
 final class eQuotes {
-	/**
-	 * Plugin version
-	 */
-	public const VERSION = '0.1.23';
-
-	/**
-	 * Dependency Admin\SettingsPage not found
-	 */
-	public const DEPENDENCY_NOT_FOUND = 1002;
 
 	/**
 	 * Our main instance
@@ -46,51 +37,11 @@ final class eQuotes {
 	private static ?eQuotes $instance = null;
 
 	/**
-	 * Plugin absolute path
-	 *
-	 * @var string
-	 */
-	private static string $path = '';
-
-	/**
-	 * Plugin absolute url
-	 *
-	 * @var string
-	 */
-	private static string $url = '';
-
-	/**
 	 * Dependency injection container.
 	 *
 	 * @var Container
 	 */
 	private Container $container;
-
-	/**
-	 * Plugin constructor
-	 */
-	public function __construct() {
-		self::$url  = plugins_url( '', __DIR__ ) . '/';
-		self::$path = plugin_dir_path( __DIR__ );
-	}
-
-	/**
-	 * Return the absolute path for this plugin
-	 *
-	 * @return string
-	 */
-	public static function path(): string {
-		return self::$path;
-	}
-
-	/**
-	 * Return plugin's url
-	 *
-	 * @return string
-	 */
-	public static function url(): string {
-		return self::$url;
-	}
 
 	/**
 	 * Returns the plugin instance or instantiate a new one.

@@ -27,7 +27,7 @@ abstract class Block implements BlockInterface {
 		add_action( 'admin_enqueue_scripts', [$this, 'register_admin_script'] );
 	}
 
-	private function build_path_or_url( string $file_name, bool $return_url = false ) : string {
+	protected function build_path_or_url( string $file_name, bool $return_url = false ) : string {
 
 		return sprintf(
 			'%s/blocks/%s/build/%s',

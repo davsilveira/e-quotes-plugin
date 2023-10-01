@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Emplement\eQuotes\Admin\Settings;
 
-use Emplement\eQuotes\eQuotes;
+use Emplement\eQuotes\Traits\Utils;
 
 /**
  * Options Page Class
@@ -19,6 +19,8 @@ use Emplement\eQuotes\eQuotes;
  * Adds custom routes
  */
 class SettingsPage {
+
+	use Utils;
 
 	/**
 	 * Initialize hooks
@@ -68,16 +70,16 @@ class SettingsPage {
 
 		wp_enqueue_style(
 			'e-quotes-settings-page',
-			eQuotes::url() . '/modules/settings-page/build/index.css',
+			$this->plugin_url() . '/modules/settings-page/build/index.css',
 			[ 'wp-components' ],
-			eQuotes::VERSION,
+			$this->plugin_version()
 		);
 
 		wp_enqueue_media();
 
 		wp_enqueue_script(
 			'e-quotes-settings-page',
-			eQuotes::url() . '/modules/settings-page/build/index.js',
+			$this->plugin_url() . '/modules/settings-page/build/index.js',
 			[
 				'wp-element',
 				'wp-components',
@@ -86,7 +88,7 @@ class SettingsPage {
 				'wp-data',
 				'wp-media-utils',
 			],
-			eQuotes::VERSION,
+			$this->plugin_version(),
 			true
 		);
 

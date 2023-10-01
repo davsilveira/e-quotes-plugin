@@ -26,6 +26,11 @@ class SettingsPage {
 	 * @return void
 	 */
 	public function init() {
+
+		if ( wp_doing_ajax() ) {
+			return; // No need to load during AJAX requests.
+		}
+
 		add_action( 'admin_menu', [ $this, 'register_admin_menus' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'register_admin_scripts' ] );
 	}

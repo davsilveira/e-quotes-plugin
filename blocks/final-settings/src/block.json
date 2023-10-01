@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "equotes/final-settings",
+  "version": "0.1.0",
+  "title": "Final Settings",
+  "category": "text",
+  "icon": "editor-table",
+  "description": "Render the quotation final settings section",
+  "attributes": {
+    "className": {
+      "type": "string",
+      "default": "equotes-price-component"
+    },
+    "sectionId": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "keywords": [ "final-settings", "input" ],
+  "textdomain": "equotes",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

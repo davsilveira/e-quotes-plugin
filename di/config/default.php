@@ -7,6 +7,8 @@ namespace Emplement\eQuotes;
 use function DI\get;
 
 return [
-	'AdminSettingsPage' => get( Admin\Settings\SettingsPage::class ),
-	'PriceBlock' => get( Blocks\Price::class ),
+	'Blocks' => [
+		get( Blocks\Price::class ),
+		get( Blocks\FinalSettings::class ),
+	]
 ];

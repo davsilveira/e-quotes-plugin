@@ -2,7 +2,8 @@ const defaults = require('@wordpress/scripts/config/webpack.config');
 const path = require('path');
 const glob = require('glob');
 
-const blockDirectories = glob.sync('./blocks/*/');
+// Change to the block you want to edit.
+const blockDirectories = glob.sync('./blocks/final-settings/');
 
 const blockConfigs = blockDirectories.map((blockDirectory) => {
 	const blockName = path.basename(blockDirectory);
@@ -12,7 +13,7 @@ const blockConfigs = blockDirectories.map((blockDirectory) => {
 			devMiddleware: { writeToDisk: true },
 			allowedHosts: 'auto',
 			host: 'equotes.local',
-			port: 8887,
+			port: 8886,
 			proxy: { '/build': [Object] }
 		},
 		entry: path.resolve(blockDirectory, 'src', 'index.tsx'),

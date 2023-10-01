@@ -484,10 +484,10 @@ ansiHTML.reset()
 
 /***/ }),
 
-/***/ "./blocks/price/src/edit.tsx":
-/*!***********************************!*\
-  !*** ./blocks/price/src/edit.tsx ***!
-  \***********************************/
+/***/ "./blocks/final-settings/src/edit.tsx":
+/*!********************************************!*\
+  !*** ./blocks/final-settings/src/edit.tsx ***!
+  \********************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -495,24 +495,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Edit; }
 /* harmony export */ });
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./blocks/price/src/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editor.scss */ "./blocks/final-settings/src/editor.scss");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "react-refresh/runtime");
 
-var _s = __webpack_require__.$Refresh$.signature();
-var __assign = undefined && undefined.__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-  };
-  return __assign.apply(this, arguments);
-};
 var _a = wp.components,
   TextControl = _a.TextControl,
   Panel = _a.Panel,
@@ -525,64 +512,11 @@ var _b = wp.blockEditor,
 var __ = wp.i18n.__;
 var useEffect = wp.element.useEffect;
 
-
 function Edit(props) {
-  _s();
   var attributes = props.attributes,
     setAttributes = props.setAttributes;
-  var blockProps = useBlockProps({
-    className: 'equotes-price-component'
-  });
-  var getCurrencySign = function () {
-    if (typeof EQUOTES === 'undefined') {
-      throw new Error('Global EQUOTES not found. Make sure it is enqueued.');
-    }
-    return EQUOTES.settings.currency === 'USD' ? '$' : 'R$';
-  };
-  var parseValue = function (value) {
-    return isNaN(parseFloat(value)) ? '' : parseFloat(value);
-  };
-  useEffect(function () {
-    setAttributes({
-      priceId: (0,lodash__WEBPACK_IMPORTED_MODULE_0__.uniqueId)('equotes-price-')
-    });
-  }, []);
-  return React.createElement(React.Fragment, null, React.createElement(InspectorControls, null, React.createElement(Panel, null, React.createElement(PanelBody, {
-    title: __('Settings', 'e-quotes'),
-    initialOpen: true
-  }, React.createElement(PanelRow, null, __('Display label:', 'e-quotes')), React.createElement(ToggleControl, {
-    label: __('Toggle label visibility', 'e-quotes'),
-    checked: attributes.displayLabel,
-    onChange: function (state) {
-      setAttributes({
-        displayLabel: state
-      });
-    }
-  }), React.createElement(PanelRow, null, __('Display currency sign:', 'e-quotes')), React.createElement(ToggleControl, {
-    label: __('Toggle sign visibility', 'e-quotes'),
-    checked: attributes.displaySign,
-    onChange: function (state) {
-      setAttributes({
-        displaySign: state
-      });
-    }
-  })))), React.createElement("div", __assign({}, blockProps), attributes.displaySign ? React.createElement("span", {
-    className: "e-quotes-currency-sign"
-  }, getCurrencySign()) : null, React.createElement(TextControl, {
-    label: attributes.displayLabel ? __('Price', 'equotes') : '',
-    value: attributes.price,
-    type: "number",
-    help: __('Only numbers. Use , for decimal separator.', 'equotes'),
-    onChange: function (value) {
-      return setAttributes({
-        price: parseValue(value)
-      });
-    }
-  })));
+  return React.createElement(React.Fragment, null);
 }
-_s(Edit, "5cY6pUE+7PPbuJMOCfLzUSl3vjw=", false, function () {
-  return [useBlockProps];
-});
 _c = Edit;
 var _c;
 __webpack_require__.$Refresh$.register(_c, "Edit");
@@ -620,20 +554,20 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 
 /***/ }),
 
-/***/ "./blocks/price/src/index.tsx":
-/*!************************************!*\
-  !*** ./blocks/price/src/index.tsx ***!
-  \************************************/
+/***/ "./blocks/final-settings/src/index.tsx":
+/*!*********************************************!*\
+  !*** ./blocks/final-settings/src/index.tsx ***!
+  \*********************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./blocks/price/src/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./blocks/price/src/edit.tsx");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./blocks/price/src/save.tsx");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./blocks/price/src/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./blocks/final-settings/src/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./blocks/final-settings/src/edit.tsx");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./blocks/final-settings/src/save.tsx");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./blocks/final-settings/src/block.json");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "react-refresh/runtime");
@@ -707,10 +641,10 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 
 /***/ }),
 
-/***/ "./blocks/price/src/save.tsx":
-/*!***********************************!*\
-  !*** ./blocks/price/src/save.tsx ***!
-  \***********************************/
+/***/ "./blocks/final-settings/src/save.tsx":
+/*!********************************************!*\
+  !*** ./blocks/final-settings/src/save.tsx ***!
+  \********************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7021,10 +6955,10 @@ module.exports = function (urlString) {
 
 /***/ }),
 
-/***/ "./blocks/price/src/editor.scss":
-/*!**************************************!*\
-  !*** ./blocks/price/src/editor.scss ***!
-  \**************************************/
+/***/ "./blocks/final-settings/src/editor.scss":
+/*!***********************************************!*\
+  !*** ./blocks/final-settings/src/editor.scss ***!
+  \***********************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7032,7 +6966,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1696128854779
+      // 1696128907614
       var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -7041,10 +6975,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./blocks/price/src/style.scss":
-/*!*************************************!*\
-  !*** ./blocks/price/src/style.scss ***!
-  \*************************************/
+/***/ "./blocks/final-settings/src/style.scss":
+/*!**********************************************!*\
+  !*** ./blocks/final-settings/src/style.scss ***!
+  \**********************************************/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7052,7 +6986,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1696128854762
+      // 1696128907607
       var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -7279,14 +7213,14 @@ var WebSocketClient = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
+/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8886&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
 /*!*****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
+  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8886&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
   \*****************************************************************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var __resourceQuery = "?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
+var __resourceQuery = "?protocol=ws%3A&hostname=equotes.local&port=8886&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webpack/hot/log.js */ "./node_modules/webpack/hot/log.js");
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -9732,17 +9666,6 @@ module.exports = window["ReactRefreshRuntime"];
 
 /***/ }),
 
-/***/ "lodash":
-/*!*************************!*\
-  !*** external "lodash" ***!
-  \*************************/
-/***/ (function(module) {
-
-"use strict";
-module.exports = window["lodash"];
-
-/***/ }),
-
 /***/ "@wordpress/blocks":
 /*!********************************!*\
   !*** external ["wp","blocks"] ***!
@@ -9754,13 +9677,13 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
-/***/ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8010&sockProtocol=http":
+/***/ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8886&sockProtocol=http":
 /*!**********************************************************************************************************************************************!*\
-  !*** ./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8010&sockProtocol=http ***!
+  !*** ./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8886&sockProtocol=http ***!
   \**********************************************************************************************************************************************/
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-var __resourceQuery = "?sockHost=equotes.local&sockPort=8010&sockProtocol=http";
+var __resourceQuery = "?sockHost=equotes.local&sockPort=8886&sockProtocol=http";
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 /* provided dependency */ var __react_refresh_socket__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/sockets/WDSSocket.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/sockets/WDSSocket.js");
 /* global __react_refresh_error_overlay__, __react_refresh_socket__, __resourceQuery */
@@ -11490,14 +11413,14 @@ module.exports = getWDSMetadata;
 
 /***/ }),
 
-/***/ "./blocks/price/src/block.json":
-/*!*************************************!*\
-  !*** ./blocks/price/src/block.json ***!
-  \*************************************/
+/***/ "./blocks/final-settings/src/block.json":
+/*!**********************************************!*\
+  !*** ./blocks/final-settings/src/block.json ***!
+  \**********************************************/
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/price","version":"0.1.0","title":"Single Price","category":"text","icon":"editor-table","description":"Render a single price input","attributes":{"price":{"type":"number","default":""},"className":{"type":"string","default":"equotes-price-component"},"priceId":{"type":"string","default":""},"displaySign":{"type":"boolean","default":true},"displayLabel":{"type":"boolean","default":true}},"supports":{"html":false},"keywords":["price","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"equotes/final-settings","version":"0.1.0","title":"Final Settings","category":"text","icon":"editor-table","description":"Render the quotation final settings section","attributes":{"className":{"type":"string","default":"equotes-price-component"},"sectionId":{"type":"string","default":""}},"supports":{"html":false},"keywords":["final-settings","input"],"textdomain":"equotes","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -11629,7 +11552,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "4761572271e61be09ba0"; }
+/******/ 		__webpack_require__.h = function() { return "ac49a1f669bc02009cf7"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -12827,10 +12750,10 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js"); })
-/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8010&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true"); })
+/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=equotes.local&port=8886&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true"); })
 /******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/webpack/hot/dev-server.js"); })
-/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8010&sockProtocol=http"); })
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./blocks/price/src/index.tsx"); })
+/******/ 	__webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=equotes.local&sockPort=8886&sockProtocol=http"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["./style-main"], function() { return __webpack_require__("./blocks/final-settings/src/index.tsx"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

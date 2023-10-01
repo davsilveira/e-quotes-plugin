@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace Emplement\eQuotes;
 
 use DI\Container;
-use DI\DependencyException;
 use DI\NotFoundException;
 
 //phpcs:disable PEAR.NamingConventions.ValidClassName.StartWithCapital
@@ -131,27 +130,15 @@ final class eQuotes {
 		// Loads translations.
 		add_action( 'init', [ $this, 'load_text_domain' ] );
 
-		$this->container()->make( 'PriceBlock' );
+		// Load all blocks.
+		$this->container()->make( 'Blocks' );
 
-		try {
-			$this->container()->make( Admin\Settings\RegisterSettings::class )->init();
-		} catch ( DependencyException | NotFoundException $e ) {
-			throw new NotFoundException(
-				__( 'Dependency Admin\Settings\RegisterSettings not found', 'e-quotes' ),
-				self::DEPENDENCY_NOT_FOUND
-			);
-		}
+		// Register global settings.
+		$this->container()->make( Admin\Settings\RegisterSettings::class )->init();
 
 		// Admin only hooks.
 		if ( is_admin() && ! wp_doing_ajax() ) {
-			try {
-				$this->container()->make( Admin\Settings\SettingsPage::class )->init();
-			} catch ( DependencyException | NotFoundException $e ) {
-				throw new NotFoundException(
-					__( 'Dependency Admin\Settings\SettingsPage not found', 'e-quotes' ),
-					self::DEPENDENCY_NOT_FOUND
-				);
-			}
+			$this->container()->make( Admin\Settings\SettingsPage::class )->init();
 		}
 	}
 

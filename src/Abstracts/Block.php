@@ -2,7 +2,9 @@
 
 namespace Emplement\eQuotes\Abstracts;
 
-abstract class Block {
+use Emplement\eQuotes\Interfaces\BlockInterface;
+
+abstract class Block implements BlockInterface {
 
 	use \Emplement\eQuotes\Traits\Utils;
 

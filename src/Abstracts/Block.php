@@ -3,10 +3,11 @@
 namespace Emplement\eQuotes\Abstracts;
 
 use Emplement\eQuotes\Interfaces\BlockInterface;
+use Emplement\eQuotes\Traits\PluginHelper;
 
 abstract class Block implements BlockInterface {
 
-	use \Emplement\eQuotes\Traits\Utils;
+	use PluginHelper;
 
 	private array $block_dependencies = [
 		'e-quotes',

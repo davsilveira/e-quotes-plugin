@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Emplement\eQuotes\Admin\Settings;
 
-use Emplement\eQuotes\Traits\Utils;
+use Emplement\eQuotes\Traits\PluginHelper;
 
 /**
  * Options Page Class
@@ -20,7 +20,7 @@ use Emplement\eQuotes\Traits\Utils;
  */
 class SettingsPage {
 
-	use Utils;
+	use PluginHelper;
 
 	/**
 	 * Initialize hooks

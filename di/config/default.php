@@ -6,6 +6,7 @@ namespace Emplement\eQuotes;
 
 use function DI\get;
 use function DI\create;
+use function DI\autowire;
 
 return [
 	'Admin' => [
@@ -21,5 +22,6 @@ return [
 	'Blocks' => [
 		get( Blocks\Price::class ),
 		get( Blocks\FinalSettings::class ),
-	]
+	],
+	Utils\AssetsManagement::class => autowire() // Autowired for caching purposes.
 ];

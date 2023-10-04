@@ -2,9 +2,11 @@
 
 namespace Emplement\eQuotes\Utils;
 
+use Emplement\eQuotes\Traits\PluginHelper;
+
 class AssetsManagement {
 
-	use \Emplement\eQuotes\Traits\Utils;
+	use PluginHelper;
 
 	private function create_asset_url( string $file_name = '', string $sub_dir ) : string {
 		return sprintf(

@@ -12,12 +12,16 @@ return [
 	'Admin' => [
 		'Dashboard' => get( Admin\Dashboard::class ),
 		'SettingsPage' => create( Admin\Settings\SettingsPage::class )
+			->method( 'init' ),
+		'Menu' => create( Admin\Menu::class )
 			->method( 'init' )
 	],
 	'App' => [
-		get( 'Blocks' ),
+		'PostTypes' => create( Commons\PostTypes::class )
+			->method( 'init' ),
 		'RegisterSettings' => create( Admin\Settings\RegisterSettings::class )
-			->method( 'init' )
+			->method( 'init' ),
+		get( 'Blocks' ),
 	],
 	'Blocks' => [
 		get( Blocks\Price::class ),

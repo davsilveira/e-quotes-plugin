@@ -65,5 +65,5 @@ msgid "This plugin requires at least <strong>%s</strong>. Please fix the require
 msgstr ""
 
 #: src/eQuotes.php:140
-msgid "Dependency Admin\\SettingsPage not found"
+msgid "Dependency Admin\\Page not found"
 msgstr ""

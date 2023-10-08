@@ -11,7 +11,7 @@ use function DI\autowire;
 return [
 	'Admin' => [
 		'Dashboard' => get( Admin\Dashboard::class ),
-		'SettingsPage' => create( Admin\Settings\SettingsPage::class )
+		'SettingsPage' => create( Admin\Settings\Page::class )
 			->constructor( get( Utils\AssetsManagement::class ) )
 			->method( 'init' ),
 		'Menu' => create( Admin\Menu::class )

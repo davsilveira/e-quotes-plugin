@@ -2,8 +2,6 @@
 
 namespace Emplement\eQuotes\Admin;
 
-use Emplement\eQuotes\Admin\Settings\SettingsPage;
-
 class Menu {
 
 	public function init() {
@@ -36,7 +34,7 @@ class Menu {
 			'Settings',
 			'edit_posts',
 			'e-quotes-settings-page',
-			[ SettingsPage::class, 'render_page' ]
+			[ Settings\Page::class, 'render_page' ]
 		);
 	}
 }

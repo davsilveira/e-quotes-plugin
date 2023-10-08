@@ -19,7 +19,7 @@ use Emplement\eQuotes\Utils\AssetsManagement;
  *
  * @since 1.0.0
  */
-class SettingsPage {
+class Page {
 
 	// Load trait that allows us to retrieve path, url and version.
 	use PluginHelper;

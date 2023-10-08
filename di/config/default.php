@@ -8,13 +8,13 @@ use function DI\get;
 use function DI\create;
 
 return [
-	'AssetsManager' => create( Utils\AssetsManagement::class ),
+	'AssetsManagement' => create( Utils\AssetsManagement::class ),
 	'Admin' => [
 		'Dashboard' => create( Admin\Dashboard::class )
-			->constructor( get( 'AssetsManager' ) )
+			->constructor( get( 'AssetsManagement' ) )
 			->method( 'init' ),
 		'SettingsPage' => create( Admin\Settings\Page::class )
-			->constructor( get( 'AssetsManager' ) )
+			->constructor( get( 'AssetsManagement' ) )
 			->method( 'init' ),
 		'Menu' => create( Admin\Menu::class )
 			->method( 'init' )
@@ -28,7 +28,7 @@ return [
 	],
 	'Blocks' => [
 		create( Blocks\Price::class )
-			->constructor( get( 'AssetsManager' ) )
+			->constructor( get( 'AssetsManagement' ) )
 			->method( 'init' ),
 	],
 ];

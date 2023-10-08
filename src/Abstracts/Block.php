@@ -156,7 +156,7 @@ abstract class Block implements BlockInterface {
 		}
 
 		$this->assets_management->enqueue_style(
-			"e-quotes-{$this->name}}-front",
+			"e-quotes-{$this->name()}}-front",
 			$this->create_block_path_or_url( $style_name, true )
 		);
 	}

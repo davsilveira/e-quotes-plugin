@@ -51,6 +51,10 @@ class PostTypes {
 				'not_found_in_trash' => esc_html__( 'No products can be found in trash', 'e-quotes' ),
 			],
 			'public'        => true,
+			'rewrite'       => [
+				'slug'       => 'eq-product',
+				'with_front' => false,
+			],
 			'has_archive'   => true,
 			'menu_position' => \Emplement\eQuotes\Admin\Menu::$menu_position,
 			'menu_icon'     => 'dashicons-admin-post',

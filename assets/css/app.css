@@ -1,10 +1,11 @@
 .e-quotes-app-search-bar {
   width: 100%;
   float: left;
+  border: 1px solid;
 }
 
 .e-quotes-app {
   pointer-events: none;
 }
 
-/*# sourceMappingURL=front.css.map */
+/*# sourceMappingURL=app.css.map */

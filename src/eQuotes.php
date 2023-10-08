@@ -82,11 +82,16 @@ final class eQuotes {
 		add_action( 'init', [ $this, 'load_text_domain' ] );
 
 		// Load global resources.
-		$this->container()->make( 'App' );
+		$this->container()->make( 'Plugin' );
 
 		// Admin only hooks.
 		if ( is_admin() && ! wp_doing_ajax() ) {
 			$this->container()->make( 'Admin' );
+		}
+
+		// Load front-end resources
+		if ( ! is_admin() ) {
+			$this->container()->make( 'Front' );
 		}
 	}
 

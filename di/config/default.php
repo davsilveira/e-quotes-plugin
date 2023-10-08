@@ -19,16 +19,21 @@ return [
 		'Menu' => create( Admin\Menu::class )
 			->method( 'init' )
 	],
-	'App' => [
+	'Plugin' => [
 		'PostTypes' => create( Commons\PostTypes::class )
 			->method( 'init' ),
 		'RegisterSettings' => create( Admin\Settings\RegisterSettings::class )
 			->method( 'init' ),
-		get( 'Blocks' ),
+		get( 'Blocks' )
 	],
 	'Blocks' => [
 		create( Blocks\Price::class )
 			->constructor( get( 'AssetsManagement' ) )
-			->method( 'init' ),
+			->method( 'init' )
 	],
+	'Front' => [
+		'App' => create( Pages\App::class )
+			->constructor( get( 'AssetsManagement' ) )
+			->method( 'init' )
+	]
 ];

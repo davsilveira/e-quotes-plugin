@@ -1,4 +1,12 @@
 <?php
+/**
+ * Class Price
+ *
+ * A block class for rendering a price component.
+ *
+ * @since 1.0.0
+ * @package Emplement\eQuotes\Blocks
+ */
 
 namespace Emplement\eQuotes\Blocks;
 
@@ -6,31 +14,42 @@ use Emplement\eQuotes\Abstracts\Block;
 
 class Price extends Block {
 
-	public function __construct() {
+	/**
+	 * Get the name of the block.
+	 *
+	 * @return string The block name.
+	 * @since 1.0.0
+	 */
+	public function name() : string {
+		return 'price';
+	}
 
-		$this->name = 'price';
-		$this->is_restrict = false;
-		$this->settings   = [
+	/**
+	 * Get the block settings.
+	 *
+	 * @return array The block settings.
+	 * @since 1.0.0
+	 */
+	public function settings() : array {
+		return [
 			'render_callback' => [ $this, 'render' ],
 		];
 	}
 
+	/**
+	 * Render the price block.
+	 *
+	 * @param array $attributes The block attributes.
+	 * @return string The rendered HTML.
+	 * @since 1.0.0
+	 */
 	public function render( array $attributes ) : string {
-
-		// Ensure unique values.
-		$class_name = array_unique(
-			// Filter any empty strings from the final array.
-			array_filter(
-				// Ensure our class is always present.
-				array_merge( ['e-quotes-price-component', $attributes['className']] )
-			)
-		);
 
 		ob_start();
 
 		?>
 
-		<div class="<?php echo esc_attr( implode( ' ', $class_name ) ); ?>">
+		<div class="<?php echo esc_attr( implode( ' ', $this->ensure_class_name( 'e-quotes-price-component', $attributes ) ) ); ?>">
 			<?php if ( isset( $attributes['displayLabel'] ) && ! empty( $attributes['displayLabel'] ) ) : ?>
 				<label for="<?php echo esc_attr( $attributes['priceId'] ); ?>" class="e-quotes-price-label">
 					<?php echo esc_html_e( 'Price', 'e-quotes' ); ?>

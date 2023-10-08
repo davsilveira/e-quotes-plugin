@@ -6,15 +6,15 @@ namespace Emplement\eQuotes;
 
 use function DI\get;
 use function DI\create;
-use function DI\autowire;
 
 return [
+	'AssetsManager' => create( Utils\AssetsManagement::class ),
 	'Admin' => [
 		'Dashboard' => create( Admin\Dashboard::class )
-			->constructor( get( Utils\AssetsManagement::class ) )
+			->constructor( get( 'AssetsManager' ) )
 			->method( 'init' ),
 		'SettingsPage' => create( Admin\Settings\Page::class )
-			->constructor( get( Utils\AssetsManagement::class ) )
+			->constructor( get( 'AssetsManager' ) )
 			->method( 'init' ),
 		'Menu' => create( Admin\Menu::class )
 			->method( 'init' )
@@ -28,8 +28,7 @@ return [
 	],
 	'Blocks' => [
 		create( Blocks\Price::class )
+			->constructor( get( 'AssetsManager' ) )
 			->method( 'init' ),
-//		get( Blocks\PriceGrid::class ),
 	],
-	Utils\AssetsManagement::class => autowire() // Autowired for caching purposes.
 ];

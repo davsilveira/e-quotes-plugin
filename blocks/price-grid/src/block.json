@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "e-quotes/price-grid",
+  "version": "0.1.0",
+  "title": "Price Grid",
+  "category": "text",
+  "icon": "editor-table",
+  "description": "Render a price grid",
+  "attributes": {
+    "price": {
+      "type": "number",
+      "default": ""
+    },
+    "className": {
+      "type": "string",
+      "default": "e-quotes-price-component"
+    },
+    "priceId": {
+      "type": "string",
+      "default": ""
+    },
+    "displaySign": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayLabel": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "keywords": [ "price", "input" ],
+  "textdomain": "e-quotes",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

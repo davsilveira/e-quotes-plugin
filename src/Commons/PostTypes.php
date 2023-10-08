@@ -12,6 +12,15 @@ namespace Emplement\eQuotes\Commons;
 class PostTypes {
 
 	/**
+	 * The product slug.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
+	public static string $product_post_type_name = 'eq_product';
+
+	/**
 	 * Initialize all hooks.
 	 *
 	 * @since 1.0.0
@@ -49,6 +58,6 @@ class PostTypes {
 			'show_in_rest'  => true,
 		];
 
-		register_post_type( 'eq_product', $args );
+		register_post_type( self::$product_post_type_name, $args );
 	}
 }

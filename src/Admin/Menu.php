@@ -51,7 +51,7 @@ class Menu {
 		add_submenu_page(
 			'e-quotes',
 			'Products',
-			'Product',
+			'Products',
 			'edit_posts', // TODO: Use our own capabilities.
 			'edit.php?post_type=eq_product'
 		);

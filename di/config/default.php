@@ -27,8 +27,9 @@ return [
 		get( 'Blocks' ),
 	],
 	'Blocks' => [
-		get( Blocks\Price::class ),
-		get( Blocks\FinalSettings::class ),
+		create( Blocks\Price::class )
+			->method( 'init' ),
+//		get( Blocks\PriceGrid::class ),
 	],
 	Utils\AssetsManagement::class => autowire() // Autowired for caching purposes.
 ];

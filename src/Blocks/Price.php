@@ -9,11 +9,10 @@ class Price extends Block {
 	public function __construct() {
 
 		$this->name = 'price';
+		$this->is_restrict = false;
 		$this->settings   = [
 			'render_callback' => [ $this, 'render' ],
 		];
-
-		$this->init();
 	}
 
 	public function render( array $attributes ) : string {

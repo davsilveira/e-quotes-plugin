@@ -4,7 +4,7 @@ namespace Emplement\eQuotes\Blocks;
 
 use Emplement\eQuotes\Abstracts\Block;
 
-class FinalSettings extends Block {
+class PriceGrid extends Block {
 
 	public function __construct() {
 

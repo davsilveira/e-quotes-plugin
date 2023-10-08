@@ -20,6 +20,8 @@ abstract class Block implements BlockInterface {
 
 	protected string $name;
 
+	protected bool $is_restrict = true;
+
 	protected array $settings = [];
 
 	public function init() {
@@ -68,6 +70,19 @@ abstract class Block implements BlockInterface {
 	}
 
 	public function register_admin_script() {
+
+		$admin_screen = get_current_screen();
+
+		if ( empty( filter_input( INPUT_GET, 'post' ) ) ) {
+			return;  // Only load in our admin screens.
+		}
+
+		if (
+			$this->is_restrict &&
+			strpos( $admin_screen->id, \Emplement\eQuotes\Commons\PostTypes::$product_post_type_name ) === false
+		) {
+			return;  // If is restricted, load only on products post type edit screen.
+		}
 
 		$style_name = 'main.css';
 

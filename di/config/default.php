@@ -10,7 +10,9 @@ use function DI\autowire;
 
 return [
 	'Admin' => [
-		'Dashboard' => get( Admin\Dashboard::class ),
+		'Dashboard' => create( Admin\Dashboard::class )
+			->constructor( get( Utils\AssetsManagement::class ) )
+			->method( 'init' ),
 		'SettingsPage' => create( Admin\Settings\Page::class )
 			->constructor( get( Utils\AssetsManagement::class ) )
 			->method( 'init' ),

@@ -74,5 +74,39 @@ class AssetsManagement {
 			$in_footer
 		);
 	}
+
+	public function register_style(
+		string $handle,
+		string $src,
+		array $dependencies = [],
+		string $version = '',
+		string $media = 'all'
+	) {
+
+		wp_register_style(
+			$handle,
+			$src,
+			$dependencies,
+			empty( $version ) ? $this->plugin_version() : $version,
+			$media
+		);
+	}
+
+	public function enqueue_style(
+		string $handle,
+		string $src = '',
+		array $dependencies = [],
+		$version = false,
+		string $media = 'all'
+	) {
+
+		wp_enqueue_style(
+			$handle,
+			$src,
+			$dependencies,
+			$version,
+			$media
+		);
+	}
 }
 

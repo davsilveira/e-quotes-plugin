@@ -12,6 +12,7 @@ return [
 	'Admin' => [
 		'Dashboard' => get( Admin\Dashboard::class ),
 		'SettingsPage' => create( Admin\Settings\SettingsPage::class )
+			->constructor( get( Utils\AssetsManagement::class ) )
 			->method( 'init' ),
 		'Menu' => create( Admin\Menu::class )
 			->method( 'init' )

@@ -1,85 +1,92 @@
 <?php
 /**
- * Admin page
+ * Admin page.
  *
- * @since 0.1.0
- * @package  Emplement\eQuotes
- * @subpackage Admin
+ * @since 1.0.0
+ * @package Emplement\eQuotes
+ * @subpackage Emplement\eQuotes\Admin\Settings
  */
 
-declare(strict_types=1);
+declare( strict_types=1 );
 
 namespace Emplement\eQuotes\Admin\Settings;
 
 use Emplement\eQuotes\Traits\PluginHelper;
+use Emplement\eQuotes\Utils\AssetsManagement;
 
 /**
- * Options Page Class
+ * Settings Page Class.
  *
- * Adds custom routes
+ * @since 1.0.0
  */
 class SettingsPage {
 
+	// Load trait that allows us to retrieve path, url and version.
 	use PluginHelper;
 
 	/**
-	 * Initialize hooks
+	 * Asset management service.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var AssetsManagement
+	 */
+	private AssetsManagement $assets_management;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param AssetsManagement $assets_management
+	 */
+	public function __construct( AssetsManagement $assets_management ) {
+		$this->assets_management = $assets_management;
+	}
+
+	/**
+	 * Initialize all hooks.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
 	public function init() {
-
-		if ( wp_doing_ajax() ) {
-			return; // No need to load during AJAX requests.
-		}
-
-		add_action( 'admin_menu', [ $this, 'register_admin_menus' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'register_admin_scripts' ] );
 	}
 
 	/**
-	 * Register admin menus.
+	 * Register scripts and styles to render the Settings Page.
 	 *
-	 * @return void
-	 */
-	public function register_admin_menus(): void {
-		add_menu_page(
-			__( 'Quotations', 'e-quotes' ),
-			__( 'Quotations', 'e-quotes' ),
-			'manage_options',
-			'e-quotes-settings-page',
-			[ $this, 'render_page' ],
-			'dashicons-editor-table',
-			81
-		);
-	}
-
-	/**
-	 * Register admin scripts.
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
 	public function register_admin_scripts(): void {
-		// Prevent loading assets on other admin screens.
-		if ( function_exists( 'get_current_screen' ) ) {
-			$admin_screen = get_current_screen();
-			if ( 'toplevel_page_e-quotes-settings-page' !== $admin_screen->id ) {
-				return;
-			}
+
+		$admin_screen = get_current_screen();
+
+		if ( strpos( $admin_screen->id, 'page_e-quotes-settings-page' ) === false ) {
+			return; // Not the settings screen.
 		}
 
-		wp_enqueue_style(
+		// Store the module path.
+		$path = sprintf( '%s/modules/settings-page', $this->plugin_url() );
+
+		// Enqueue module styles.
+		$this->assets_management->enqueue_style(
 			'e-quotes-settings-page',
-			$this->plugin_url() . '/modules/settings-page/build/index.css',
-			[ 'wp-components' ],
-			$this->plugin_version()
+			sprintf( '%s/build/index.css', $path ),
+			[ 'wp-components' ]
 		);
 
+		// Enqueue WP media scripts necessary for media upload handling.
 		wp_enqueue_media();
 
-		wp_enqueue_script(
+		// Enqueue the main module script.
+		$this->assets_management->enqueue_script(
 			'e-quotes-settings-page',
-			$this->plugin_url() . '/modules/settings-page/build/index.js',
+			sprintf( '%s/build/index.js', $path ),
 			[
 				'wp-element',
 				'wp-components',
@@ -87,25 +94,16 @@ class SettingsPage {
 				'wp-notices',
 				'wp-data',
 				'wp-media-utils',
-			],
-			$this->plugin_version(),
-			true
-		);
-
-
-		wp_add_inline_script(
-			'e-quotes-settings-page',
-			'const eQuotesVars = ' . wp_json_encode(
-				[
-					'variable' => 'value',
-				],
-			),
-			'before'
+			]
 		);
 	}
 
 	/**
-	 * Display admin page.
+	 * Render the container HTML.
+	 *
+	 * The Settings page will be loaded as a React Application.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */

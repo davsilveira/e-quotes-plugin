@@ -1,13 +1,41 @@
 <?php
+/**
+ * Admin menus.
+ *
+ * All admin menus must be added here.
+ *
+ * @since 1.0.0
+ * @package Emplement\eQuotes
+ * @subpackage Emplement\eQuotes\Admin
+ */
 
 namespace Emplement\eQuotes\Admin;
 
 class Menu {
 
+	/**
+	 * Main menu position.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var int
+	 */
+	public static int $menu_position = 12;
+
+	/**
+	 * Initialize all hooks.
+	 *
+	 * @since 1.0.0
+	 */
 	public function init() {
 		add_action( 'admin_menu', [$this, 'register_admin_menus'] );
 	}
 
+	/**
+	 * Register all admin menus.
+	 *
+	 * @since 1.0.0
+	 */
 	public function register_admin_menus() {
 
 		add_menu_page(
@@ -17,22 +45,22 @@ class Menu {
 			'e-quotes',
 			'',
 			'dashicons-editor-table',
-			81
+			self::$menu_position
 		);
 
 		add_submenu_page(
 			'e-quotes',
 			'Products',
 			'Product',
-			'edit_posts',
-			'e-quotes-products'
+			'edit_posts', // TODO: Use our own capabilities.
+			'edit.php?post_type=eq_product'
 		);
 
 		add_submenu_page(
 			'e-quotes',
 			'Settings',
 			'Settings',
-			'edit_posts',
+			'edit_posts', // TODO: Use our own capabilities.
 			'e-quotes-settings-page',
 			[ Settings\Page::class, 'render_page' ]
 		);
